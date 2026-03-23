@@ -22,7 +22,11 @@ window.onload = function () {
     }
   });
 
-  const coordText = document.getElementById('printpoint1cords');
+  const coordText = document.getElementById('note2');
+
+  // 🔥 STORE SELECTED POINT
+  let selectedPoint = null;
+  let selectedCoord = null;
 
   // 🔹 GRID
   const drawGrid = (ctx) => {
@@ -38,7 +42,6 @@ window.onload = function () {
     ctx.strokeStyle = '#ccc';
     ctx.stroke();
 
-    // labels
     ctx.fillStyle = 'black';
     ctx.font = '9px Arial';
 
@@ -75,16 +78,7 @@ window.onload = function () {
     ctx.fill();
   };
 
-  // 🔹 VECTOR
-  const drawVector = (ctx, x, y, color = 'black') => {
-  ctx.beginPath();
-  ctx.moveTo(origin.x, origin.y);
-  ctx.lineTo(x, y);
-  ctx.strokeStyle = color;
-  ctx.lineWidth = 1.5;
-  ctx.stroke();
-};
-  // 🔥 INFINITE LINE (PERFECT)
+  // 🔥 INFINITE LINE
   const drawInfiniteLine = (ctx, x, y) => {
 
     const dx = x - origin.x;
@@ -118,7 +112,6 @@ window.onload = function () {
     ctx.fillText("(0,0)", origin.x - 20, origin.y - 5);
   };
 
-  
   // 🔹 DRAW ALL
   const drawAll = () => {
     for (const id in canvases) {
@@ -128,7 +121,7 @@ window.onload = function () {
     }
   };
 
-  // 🔥 CLICK EVENT
+  // 🔥 CLICK EVENT (ONLY SELECT)
   if (canvases['planeCanvas']) {
     canvases['planeCanvas'].canvas.addEventListener('click', (e) => {
 
@@ -138,30 +131,45 @@ window.onload = function () {
 
       drawAll();
 
-      // 🔹 FIRST GRID
-      drawPoint(canvases['planeCanvas'].ctx, x, y);
+      // store
+      selectedPoint = { x, y };
 
-      // 🔹 SECOND GRID
-      if (canvases['vectorCanvas']) {
-        const ctx = canvases['vectorCanvas'].ctx;
-
-      drawInfiniteLine(ctx, x, y);   // line first
-       
-drawPoint(ctx, x, y, 'green'); // 🔥 point on top (fix)
-drawPoint(ctx, origin.x, origin.y, 'blue');
-labelOrigin(ctx);
-      }
-
-      // 🔹 COORDINATES
       const xCoord = ((x - origin.x) / spacing).toFixed(2);
       const yCoord = ((origin.y - y) / spacing).toFixed(2);
+      selectedCoord = { xCoord, yCoord };
 
-      if (coordText) {
-        coordText.innerHTML = `(<i>x, y</i>) = (${xCoord}, ${yCoord})`;
-      }
+      // FIRST GRAPH
+      const ctx1 = canvases['planeCanvas'].ctx;
+      drawPoint(ctx1, x, y);
 
     });
   }
+
+  // 🔥 SUBMIT FUNCTION
+  window.submitPoint = function () {
+
+    if (!selectedPoint) {
+      alert("Please select a point first!");
+      return;
+    }
+
+    const { x, y } = selectedPoint;
+    const { xCoord, yCoord } = selectedCoord;
+
+    const ctx = canvases['vectorCanvas'].ctx;
+
+    drawGrid(ctx);
+    drawAxes(ctx);
+
+    drawInfiniteLine(ctx, x, y);
+    drawPoint(ctx, x, y, 'green');
+    drawPoint(ctx, origin.x, origin.y, 'blue');
+    labelOrigin(ctx);
+
+    coordText.innerHTML =  `
+        <b></b> <i>S</i> = { (${xCoord}, ${yCoord}) }
+      `;
+  };
 
   drawAll();
 };

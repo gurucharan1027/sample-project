@@ -6,13 +6,13 @@ body {
 .container {
     display: grid;
     grid-template-columns:.5fr 0fr 1fr;
-    margin: 2rem;
+    margin: 0rem 2rem 2rem 2rem;
     
 }
 
 #cont{
       padding: 3rem;
-      margin: 2rem;
+      margin: 0rem 2rem 2rem 2rem;
   border-radius: 8px;
   background-color: rgb(242, 229, 255);
   
@@ -45,7 +45,7 @@ img{
     padding: 0.2rem 0.2rem 0.2rem 0.2rem;
     float:center;
     margin: 0.5rem;
-    font-size: 28px;
+    font-size: 2.5rem;
     color: white;
 }
 .simh{
@@ -54,7 +54,7 @@ img{
     background: rgb(43, 226, 122);
     padding: 0.2rem 0.2rem 0.2rem 0.2rem;
     float:center;
-    margin: 2rem;
+    margin: 0 2rem;
     font-size: 28px;
     color: rgb(0, 0, 0);
 }
@@ -62,7 +62,7 @@ img{
 .quiz-box {
  
   padding: 20px;
-  width: 350px;
+  width: 430px;
   
  
 }
@@ -76,7 +76,7 @@ img{
   display: block;
   background: #f1c4c4;
   padding: 10px;
-  margin: 8px 0;
+  margin: 8px 1rem;
   border-radius: 6px;
   cursor: pointer;
   font-size: 1.2rem;
