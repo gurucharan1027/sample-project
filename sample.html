@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" href="span.css">
+</head>
+<style>
+    .previous{
+    display: block;
+    float:left;
+    background-color: #04AA6D;
+    color: white;
+    font-size: 18px;
+    margin-top: 0.5rem;
+    align-content: center;
+    text-align: center;
+    padding: 8px 16px;
+    text-decoration: none;
+    width:8rem;
+}
+.previous:hover {
+  background-color: #ada;
+  color: black;
+}
+</style>
+<body>
+<main>
+    <h2 class="pagehead">Spanning Set</h2>
+    
+    <div id="cont" style="float: center; align-content:right;" class="cont">
+            <p class="para"><b>Linear span:</b> Case (i). Let φ ≠ S ⊆ V. Then the linear span of S consists of all possible linear combinations of elements of S. It is denoted by L(S). Thus L(S)= { α<sub>1</sub>x<sub>1</sub>+ α<sub>2</sub>x<sub>2</sub>+ …+α<sub>k</sub>x<sub>k</sub> : x<sub>1</sub>, x<sub>2</sub>, ..., x<sub>k</sub> ∈V, α<sub>1</sub>, α<sub>2</sub>, …, α<sub>k</sub> ∈F}. </p>
+           <img src="imgs/exp3newimage1.PNG" alt="" style="display: block;
+margin-left: auto;">
+
+            <p class="para"><b>Spanning set:</b> If L(S)=V, that is if V is the linear span of S, then S is called a spanning set of V and it is said that S spans V.</p>
+            <img src="imgs/exp3newimage2.PNG" alt="" style=" display: block;
+margin-left: auto;">
+
+     </div>
+      <h3 class="simh">Hands on practice</h3> 
+        <section class="container">
+            
+            <div class="column">
+              
+                <h3 class="boxhead"><i>L</i>(<i>S</i>), for <i>S</i> = { <i>x</i> }</h3>
+                <button type="submit" onclick="point1()" value="Pick a point x">Pick a point <i>x</i> by clicking on plane given below</button><p id="oespan" style="color:darkblue;"></p>
+                <canvas id="planeCanvas" width="250" height="250" style="margin-left: 5rem;"></canvas><br>
+                <p id="note1" style="color:red;"></p>
+            </div>
+<br>
+            <div class="column">
+                <!-- <h3 class="boxhead"><i>L</i>(<i>S</i>), for <i>S</i> = {  <i>x</i>,  <i>y</i> }</h3> -->
+                <!-- <button type="submit" onclick="pnt1()" value="Pick a point x">Pick a point <i>x</i></button><br><br> -->
+                <canvas id="vectorCanvas" width="250" height="250" style="margin-top: 7rem;"></canvas><br>
+
+                <p id="note2" style="color:red;"></p>
+
+                <!-- <button class="subhead" id="subhead" type="submit" onclick="showgraphs2();" value="Pick another point (y) - ">Pick another point (<i>y</i>) -</button><br>
+                <div id="showgraphs2" style = "display:none;">
+                    <div  class="responsive-two-column-grid">
+                        <div class="case">
+                            <input id="btn1" type="submit" onclick="pnt2()" value="on line"><br><br>
+                            <canvas id="canvas" width="150" height="150"></canvas><br>
+                            <p id='span2line' style="color:darkblue;"></p>
+                        </div>
+                        <div class="case">
+                            <input id="btn2" type="submit" onclick="pnt3()" value="not on line"><br><br>
+                            <canvas id="tecanvas" width="150" height="150"></canvas><br>
+                            <p id="span2R2" style="color:darkblue;"></p>
+                            
+                        </div>
+                    </div>
+                </div> -->
+                
+
+            </div>
+            <!-- <div class="column">
+                <h3 class="boxhead"><i>L</i>(<i>S</i>), for <i>S</i> = {  <i>x</i><sub>1</sub> ,  <i>x</i><sub>2</sub> , ... ,  <i>x</i><sub>n</sub> }</h3>
+                <button type="submit" onclick="pt1()" value="Pick a point">Pick a point</button><br><br>
+                <canvas id="multicanvas" width="250" height="250"></canvas><br>
+
+                <p id="note3" style="color:red;"></p>
+
+                <button class="subhead" id="subhead" type="submit" onclick="showgraphsn();" value="Pick more points ">Pick more points </button><br>
+                <div id="showgraphsn" style = "display:none;">
+                    <div class="responsive-two-column-grid">
+                        <div class="case">
+                            <input id="btn3" type="submit" onclick="pt2()" value="on line"><br><br>
+                            <canvas id="mecanvas" width="250" height="150"></canvas><br>
+                            <p id='spannline' style="color:darkblue;"></p>
+                        </div>
+                        <div class="case">
+                            <input id="btn4" type="submit" onclick="pt3()" value="at least one not on line"><br><br>
+                            <canvas id="mtecanvas" width="150" height="150"></canvas><br>
+                            <p id='spannRn' style="color:darkblue;"></p>
+                        </div>
+                    </div>
+                </div>
+                
+                
+            </div> -->
+        </section>
+        <h3 class="simh">Example</h3>
+        <div id="cont" style="float: center; align-content:right;" class="cont">
+            
+           
+  <div class="question">
+    <p class="para"><b>Example-I:</b> Let R<sup>2</sup> be the vector space over R where S ⊆ R<sup>2</sup>. Then</p>
+<p class="para">(i) S={(1, 0)} does not span R<sup>2</sup>, i.e. L(S) ≠ R<sup>2</sup> Justification: By definition, L(S)={x(1, 0)| x∈R}={(x, 0)| x∈R}. We show that (1, 1) ∉ L(S) because if not, then (1, 1) ∈ L(S) which implies (1, 1)=α(x, 0)=(αx, 0) i.e. 1=0, a contradiction. Thus (1, 1) ∉ L(S). Hence L(S) ≠ R<sup>2</sup>. In the adjoining figure (Fig. 1) red line represents the span of S.</p>
+  <img src="imgs/exp3.2.PNG" alt="Fig. 1">
+</div>
+
+
+  
+  <!-- <button onclick="resetQuiz()">Reset</button> -->
+
+
+     </div>
+        <h3 class="simh">Exercise</h3>
+        <div id="cont" style="float: center; align-content:right;" class="cont">
+            
+           <div class="quiz-box">
+  <div class="question">
+    <li>A: (4, 4, 3), (2, 3, 9) and (6, 7, 12) span R R<sup>3</sup> <br>
+    B: (4, 3, 7), (1, 1, 1) and (0, 0, 0) span R
+R<sup>3</sup></li>
+
+  </div>
+
+  <div class="option" onclick="checkAnswer(this, 'A')">A) A is true, B is true</div>
+  <div class="option" onclick="checkAnswer(this, 'B')">B) A is true, B is false</div>
+  <div class="option" onclick="checkAnswer(this, 'C')">C) A is false, B is true</div>
+  <div class="option" onclick="checkAnswer(this, 'D')">D) A is false, B is false</div>
+
+  <div id="result"></div>
+  <!-- <button onclick="resetQuiz()">Reset</button> -->
+</div>
+
+     </div>
+
+
+    </main>
+
+
+    <script>
+function checkAnswer(element, option) {
+
+  const correct = 'C';
+  const options = document.querySelectorAll('.option');
+  const result = document.getElementById('result');
+
+  options.forEach(opt => opt.classList.remove('correct', 'wrong'));
+
+  if (option === correct) {
+    element.classList.add('correct');
+    result.innerHTML = "✅ Correct Answer!";
+    result.style.color = "green";
+  } else {
+    element.classList.add('wrong');
+    result.innerHTML = "❌ Incorrect Answer!";
+    result.style.color = "red";
+
+    // highlight correct answer
+    options.forEach(opt => {
+      if (opt.innerText.startsWith(correct)) {
+        opt.classList.add('correct');
+      }
+    });
+  }
+}
+
+function resetQuiz() {
+  const options = document.querySelectorAll('.option');
+  const result = document.getElementById('result');
+
+  options.forEach(opt => opt.classList.remove('correct', 'wrong'));
+  result.innerHTML = "";
+}
+</script>
+</body>
+<script src="span.js"></script>
+
+</html>
