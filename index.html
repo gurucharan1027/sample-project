@@ -6,41 +6,62 @@
     <link rel="stylesheet" type="text/css" href="span.css">
 </head>
 <style>
-    .previous{
-    display: block;
-    float:left;
-    background-color: #04AA6D;
-    color: white;
-    font-size: 18px;
-    margin-top: 0.5rem;
-    align-content: center;
-    text-align: center;
-    padding: 8px 16px;
-    text-decoration: none;
-    width:8rem;
+   .cont {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
 }
-.previous:hover {
-  background-color: #ada;
-  color: black;
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
 }
+
+.para {
+  flex: 3;   /* text zyada space lega */
+}
+
+.row img {
+  flex: 1;   /* image kam space legi */
+  max-width: 200px;
+  width: 100%;
+}
+
+
 </style>
 <body>
 <main>
     <h2 class="pagehead">Spanning Set</h2>
     <h3 class="simh">Theory</h3> 
-    <div id="cont" style="float: center; align-content:right;" class="cont">
-            <p class="para"><b>Span:</b> If φ ≠ S ⊆ V, then span of S is defined to be the collection of all linear combinations of elements of S and if S= φ, then span of S is defined to be {0}. It is denoted by L(S).  </p>
-           <img src="imgs/exp3newimage1.PNG" alt="" style="display: block;
-margin-left: auto;">
 
-            <p class="para"><b>Spanning set:</b> If L(S)=V, then S is called a spanning set of V and it is said that S spans V.</p>
-            <img src="imgs/exp3newimage2.PNG" alt="" style=" display: block;
-margin-left: auto;">
+    <div id="cont" class="cont">
 
-     </div>
+  <!-- Row 1 -->
+  <div class="row">
+    <p class="para">
+       <b>Span:</b> If φ ≠ S ⊆ V, then span of S is defined to be the collection of all linear combinations of elements of S and if S= φ, then span of S is defined to be {0}. It is denoted by L(S).
+    </p>
+    <img src="imgs/exp3newimage1.PNG" alt="">
+  </div>
 
-      <h3 class="simh">Examples</h3>
-        <div id="cont" style="float: center; align-content:right;" class="cont">
+  <!-- Row 2 -->
+  <div class="row">
+    <p class="para">
+      <b>Spanning set:</b> If L(S)=V, then S is called a spanning set of V and it is said that S spans V.
+    </p>
+    <img src="imgs/exp3newimage2.PNG" alt="">
+  </div>
+
+  <!-- Row 3 -->
+  <!-- <div class="row">
+    <p class="para">
+      <b>Example:</b> Any example explanation text goes here...
+    </p>
+    <img src="imgs/exp3newimage3.PNG" alt="">
+  </div> -->
+
+
             
            
   <div class="question" style="display: flex; align-items: flex-start; gap: 20px;">
